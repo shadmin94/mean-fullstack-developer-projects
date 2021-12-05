@@ -1,0 +1,16 @@
+<div class="container">
+     <div id="questions" *ngIf="questions.length > 0 && num < questions.length; else elseblock" >
+        <h2>Current Score : {{score}} </h2>
+        <h2 [innerHTML]="questions[num].question"></h2>
+        <ul>
+            <li *ngFor="let a of questions[num].incorrect_answers">
+                <button (click)="checkanswer(questions[num].correct_answer, a)" [innerHTML]="a"></button>
+            </li>
+        </ul>
+    </div> 
+    <ng-template #elseblock>
+        <h2>You Scored: {{score}}</h2>
+        <button (click)="start()">Restart Quiz</button>
+    </ng-template>
+</div>
+
